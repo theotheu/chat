@@ -1,0 +1,1 @@
+Minimal chat client with node and socket.io
