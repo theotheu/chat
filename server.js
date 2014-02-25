@@ -16,7 +16,7 @@ io.sockets.on("connection", function (socket) {
         io.sockets.emit('heartbeat', {hello: 'world!', dateTime: d});
     }, 1000);
 
-    // Sends a message to the char board
+    // Sends a message to the chat board
     socket.on("sendMessage", function (data) {
         io.sockets.emit("newMessage", data);
     });
