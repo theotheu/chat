@@ -15,7 +15,10 @@
 <form id="send-message">
     <textarea size="35" id="message"></textarea>
     <input type="submit" value="send"/>
+
+    <div id="heartbeat">...</div>
 </form>
+
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script src="/socket.io/socket.io.js"></script>
 <script>
@@ -37,7 +40,7 @@
         });
 
         socket.on('heartbeat', function (data) {
-            console.log(data);
+            document.getElementById("hearbeat").innerHTML = data;
         });
 
     });
