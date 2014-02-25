@@ -9,12 +9,16 @@ app.get("/", function (req, res) {
 });
 
 io.sockets.on("connection", function (socket) {
-    setInterval(function() {
-	var d = new Date();
-       io.sockets.emit('heartbeat', {date:d, hello:'world'});
+
+    // Sends a message every 1000 milliseconds
+    setInterval(function () {
+        var d = new Date();
+        io.sockets.emit('heartbeat', {hello: 'world!', dateTime: d});
     }, 1000);
+
+    // Sends a message to the char board
     socket.on("sendMessage", function (data) {
         io.sockets.emit("newMessage", data);
- //             socket.broadcar.emit();
     });
+
 });

@@ -6,7 +6,7 @@
         #chat {
             height: 500px;
             border: solid 1px black;
-	    font-family: "courier"
+            font-family: "courier"
         }
     </style>
 </head>
@@ -19,26 +19,26 @@
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script src="/socket.io/socket.io.js"></script>
 <script>
-    jQuery(function($) {
+    jQuery(function ($) {
         var socket = io.connect();
         var $messageForm = $("#send-message");
         var $messageBox = $("#message");
         var $chat = $("#chat");
 
-        $messageForm.submit(function(e) {
+        $messageForm.submit(function (e) {
             e.preventDefault();
             socket.emit("sendMessage", $messageBox.val());
             $messageBox.val("");
         });
 
-        socket.on("newMessage", function(data) {
+        socket.on("newMessage", function (data) {
             $chat.append(data);
             $chat.append("<br/>");
         });
 
-        socket.on('heartbeat', function(data) {
-		console.log(data);
-	});
+        socket.on('heartbeat', function (data) {
+            console.log(data);
+        });
 
 
     });
