@@ -2,7 +2,7 @@ Minimal chat client with node and socket.io
 
 Installation
 ------------
-```git clone https://github.com/theotheu/chat ~/workspaces/chat```
+```git clone https://github.com/theotheu/chat```
 
 ```cd ~/workspaces/chat```
 
