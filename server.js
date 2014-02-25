@@ -14,7 +14,7 @@ io.sockets.on("connection", function (socket) {
     setInterval(function () {
         var d = new Date();
         io.sockets.emit('heartbeat', {hello: 'world!', dateTime: d});
-    }, 1000);
+    }, 4000);
 
     // Sends a message to the chat board
     socket.on("sendMessage", function (data) {
