@@ -9,8 +9,12 @@ app.get("/", function (req, res) {
 });
 
 io.sockets.on("connection", function (socket) {
+    setInterval(function() {
+	var d = new Date();
+       io.sockets.emit('heartbeat', {date:d, hello:'world'});
+    }, 1000);
     socket.on("sendMessage", function (data) {
         io.sockets.emit("newMessage", data);
-//              socket.broadcar.emit();
+ //             socket.broadcar.emit();
     });
 });
