@@ -4,7 +4,7 @@ Installation
 ------------
 ```git clone https://github.com/theotheu/chat```
 
-```cd ~/workspaces/chat```
+```cd chat```
 
 ```npm install```
 
