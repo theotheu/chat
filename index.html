@@ -40,7 +40,7 @@
         });
 
         socket.on('heartbeat', function (data) {
-            document.getElementById("heartbeat").innerHTML = data;
+            document.getElementById("heartbeat").innerHTML = JSON.stringify(data);
         });
 
     });
