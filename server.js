@@ -13,8 +13,9 @@ io.sockets.on("connection", function (socket) {
     // Sends a message every 1000 milliseconds
     setInterval(function () {
         var d = new Date();
+        console.log('d', d);
         io.sockets.emit('heartbeat', {hello: 'world!', date: d});
-    }, 4000);
+    }, 1000);
 
     // Sends a message to the chat board
     socket.on("sendMessage", function (data) {
