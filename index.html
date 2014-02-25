@@ -40,6 +40,7 @@
         });
 
         socket.on('heartbeat', function (data) {
+            console.log("heartbeat", data);
             document.getElementById("heartbeat").innerHTML = JSON.stringify(data);
         });
 
