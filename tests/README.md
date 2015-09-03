@@ -1,10 +1,17 @@
 
-- hhttp://webdriver.io/api.html
+- http://webdriver.io/api.html
 - https://github.com/webdriverio/webdriverio/blob/master/examples/multiremote/webdriverio.multiremote.js
  
 #FIXME CLEANUP ABOVE THIS LINE 
 
 ---
+# Install webdriver
+Since v3 WebdriverIO comes with an own test runner. If you want to run your integration tests with it, install WebdriverIO globally calling:
+
+`sudo npm install -g webdriverio`
+
+@see http://webdriver.io/guide/getstarted/install.html
+
 
 # Install selenium standalone server
 

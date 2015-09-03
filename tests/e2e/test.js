@@ -17,15 +17,25 @@ var options = {
          * @see http://elementalselenium.com/tips/69-safari
          *
          */
-        browserName: 'chrome' // phantomjs | chrome | firefox | safari
+        browserName: 'phantomjs' // phantomjs | chrome | firefox | safari
     }
 };
 
 webdriverio
     .remote(options)
     .init()
-    .url('http://www.google.com')
+    .url('http://localhost:3000')
     .title(function(err, res) {
         console.log('Title was: ' + res.value);
     })
+    .waitForExist("#message", function(){
+        console.log('finally');
+
+    })
+    .setValue("#message", "tada!")
+    .submitForm("#submitBtn")
+
+
+
+
     .end();
