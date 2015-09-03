@@ -3,8 +3,8 @@ var express = require("express"),
     server = require("http").createServer(app),
     io = require("socket.io").listen(server);
 
-server.listen(3000, function() {
-    console.log('Listening on port 3000.');
+server.listen(5000, function() {
+    console.log('Listening on port 5000.');
 });
 app.get("/", function (req, res) {
     res.sendFile(__dirname + "/index.html");
