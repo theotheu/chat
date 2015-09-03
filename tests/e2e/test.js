@@ -24,7 +24,7 @@ var options = {
 webdriverio
     .remote(options)
     .init()
-    .url('http://localhost:3000')
+    .url('http://localhost:5000')
     .title(function(err, res) {
         console.log('Title was: ' + res.value);
     })
