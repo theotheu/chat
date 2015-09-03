@@ -20,6 +20,7 @@ var options = {
     }
 };
 
+
 webdriverio
     .remote(options)
     .init()
