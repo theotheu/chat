@@ -3,8 +3,6 @@
  * Run with `node simple-test.js`
  *
  */
-
-
 var webdriverio = require('webdriverio');
 var options = {
     desiredCapabilities: {
