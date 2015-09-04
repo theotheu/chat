@@ -18,14 +18,14 @@ var options = {
          * @see http://elementalselenium.com/tips/69-safari
          *
          */
-        browserName: 'chrome' // phantomjs | chrome | firefox | safari
+        browserName: 'phantomjs' // phantomjs | chrome | firefox | safari
     }
 };
 
 //webdriverio
 //    .remote(options)
 //    .init()
-//    .url('http://localhost:3000')
+//    .url('http://localhost:5000')
 //    .title(function (err, res) {
 //        console.log('Title was: ' + res.value);
 //    })
@@ -50,7 +50,7 @@ describe("First simple test", function () {
 
     it("Title should be 'Chat'", function (done) {
         client
-            .url('http://localhost:3000')
+            .url('http://localhost:5000')
             .getTitle(function (err, title) {
                 assert(err === undefined);
                 assert(title === 'Chat');
@@ -61,7 +61,7 @@ describe("First simple test", function () {
 
     it("Title should be 'Chat'", function (done) {
         client
-            .url('http://localhost:3000')
+            .url('http://localhost:5000')
             .getTitle(function (err, title) {
                 assert(err === undefined);
                 assert(title === 'Chat');
@@ -74,52 +74,6 @@ describe("First simple test", function () {
 
     after(function (done) {
         client.end(done);
-    });
-
-});
-describe("Second test", function () {
-
-    this.timeout(99999999);
-    var client1 = {};
-    var client2 = {};
-
-    before(function (done) {
-        client1 = webdriverio.remote(options)
-        client2 = webdriverio.remote(options)
-
-
-        ;
-        client1.init(done);
-        client2.init(done);
-    });
-
-    it("Title should be 'Chat'", function (done) {
-        client1
-            .url('http://localhost:3000')
-            .setValue("#message", "tada! 2nd resr")
-            .submitForm("#submitBtn")
-            .then(function (err, val) {
-                console.log('>>>>>', err, val)
-            })
-
-            .call(done)
-        ;
-
-
-        //client2
-        //    .url('http://localhost:3000')
-        //    .getValue("#message", "tada! 2nd resr")
-        //     .then(function (err, val) {
-        //        console.log('>>>>>', err, val)
-        //    })
-        //
-        //    .call(done);
-    });
-
-
-    after(function (done) {
-        client1.end(done);
-        client2.end(done);
     });
 
 });
