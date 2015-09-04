@@ -59,11 +59,8 @@ describe('multiremote example', function () {
                 assert.equal(v, true);
             })
             .getText('#chat').then(function(messages) {
-                console.log('#####', messages);
                 var m = messages.match(/Hello and welcome from browserB/g).length;
-                console.log('>>>>>', m);
-                m.should.toBeGreaterThan(0);
-                //assert.equal(m, 1); // http://chaijs.com/api/assert/
+                expect(m).to.be.above(0);
             })
 
     });

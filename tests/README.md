@@ -31,16 +31,6 @@ Install the selenium version with (`sudo` is only for Linux and OSX)
 sudo selenium-standalone install --version=2.43.1
 ```
 
-*Version 2.44 has issues. Use 2.43.1*
-
-Open a new terminal and run
-```
-selenium-standalone start --version=2.43.1
-```
-
-There is no need to install phantomjs.
-
-
 ## Option: downloading the jar
 Check the actual version at http://www.seleniumhq.org/download/
 
@@ -79,13 +69,30 @@ phantomjs --webdriver=4445 --webdriver-selenium-grid-hub=http://127.0.0.1:4444
 # Run the tests
 
 ## Start the chat server 
-Open a terminal and execute `node server.js` from the root from this dorectory.
+Open a new terminal and execute `node server.js` from the root from this dorectory.
  
 You can verify that it runs by pointing your browser to `http://localhost:5000`. 
 
 Replace `localhost` with the appropriate hostname 
 
- 
+## Start the selenium
+Open a new terminal.
+
+*Version 2.44 has issues. Use 2.43.1*
+
+Open a new terminal and run
+```
+selenium-standalone start --version=2.43.1
+```
+
+## Run the tests
+Open a new terminal.
+
+Change directory to tests/e2e.
+
+Execute `mocha multi-test.js`
+
+
 
 
 ### References
