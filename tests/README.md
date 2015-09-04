@@ -85,12 +85,12 @@ Open a new terminal and run
 selenium-standalone start --version=2.43.1
 ```
 
-## Run the tests
+## Start the tests
 Open a new terminal.
 
-Change directory to tests/e2e.
+Run `npm test`.
 
-Execute `mocha multi-test.js`
+Other option is to change your directory to tests/e2e and execute `mocha multi-test.js`
 
 
 
