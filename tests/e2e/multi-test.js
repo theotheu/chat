@@ -10,7 +10,7 @@ var matrix = webdriverio.multiremote({
     browserB = matrix.select('browserB');
 
 
-describe('multiremote example', function () {
+describe('Chat test with two browsers', function () {
 
     this.timeout(99999999);
 
