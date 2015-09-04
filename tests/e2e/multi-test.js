@@ -50,7 +50,6 @@ describe('multiremote example', function () {
     });
 
 
-
     it('Should read a message from browserB', function () {
 
         return browserB
@@ -58,7 +57,7 @@ describe('multiremote example', function () {
             .isVisible("#chat").then(function (v) {
                 assert.equal(v, true);
             })
-            .getText('#chat').then(function(messages) {
+            .getText('#chat').then(function (messages) {
                 var m = messages.match(/Hello and welcome from browserB/g).length;
                 expect(m).to.be.above(0);
             })
@@ -67,73 +66,16 @@ describe('multiremote example', function () {
 
     it('Should get me a the title of browserA', function () {
         return browserA
-            .url('http://localhost:5000')
             .getTitle().should.eventually.be.equal('Chat');
     });
 
     it('Should get me a the title of browserB', function () {
-         return browserB
-            .url('http://localhost:5000')
+        return browserB
             .getTitle().should.eventually.be.equal('Chat');
     });
 
-    /*
-     it('Should get the title of the browser windows', function (done) {
-     //browserA
-     //    .getTitle(function (err, title) {
-     //        assert(err === undefined);
-     //        assert(title === 'Chat');
-     //    });
-
-
-     browserB
-     .getTitle(function (err, title) {
-     assert(err === undefined);
-     assert(title === 'Chat');
-     });
-
-     browserA
-     .setValue("#message", "Hello and welcome from browserA")
-     .submitForm("#submitBtn");
-
-     browserB
-     .setValue("#message", "Hello and welcome from browserB")
-     .submitForm("#submitBtn");
-
-     return matrix.sync().call(done);
-     });
-
-
-     it('Should verify messages from browserA to browserB', function (done) {
-     browserA
-     .waitForExist('#chat', 5000)
-     .getText('#chat').then(function (messages) {
-     var m = messages.match(/Hello and welcome from browserB/g).length;
-     console.log('>>>>> messages', m);
-     assert(m > 2);
-     });
-
-     return matrix.sync().call(done);
-     });
-
-     it('Should verify messages from browserB to browserA', function (done) {
-
-
-     browserA
-     .waitForExist('#chat', 5000)
-     .getText('#chat').then(function (messages) {
-     var m = messages.match(/Hello and welcome from browserA/g).length;
-     console.log('>>>>> messages', m);
-     assert(m > 2);
-     });
-
-     return matrix.sync().call(done);
-     });
-     */
-
-
     it('should end the session', function () {
-        return matrix.pause(2000).end();
+        return matrix.pause(500).end();
     });
 
 });
