@@ -13,7 +13,7 @@ Since v3 WebdriverIO comes with an own test runner. If you want to run your inte
 @see http://webdriver.io/guide/getstarted/install.html
 
 
-# Install selenium standalone server
+# Installation of selenium standalone server
 
 
 ## Option: selenium-standalone
@@ -76,15 +76,17 @@ phantomjs --webdriver=4445 --webdriver-selenium-grid-hub=http://127.0.0.1:4444
 ---
 
 
-### Install protractor global with
-```
-sudo npm install -g protractor
-```
+# Run the tests
 
-### Run test
-```
-npm test
-```
+## Start the chat server 
+Open a terminal and execute `node server.js` from the root from this dorectory.
+ 
+You can verify that it runs by pointing your browser to `http://localhost:5000`. 
+
+Replace `localhost` with the appropriate hostname 
+
+ 
+
 
 ### References
 - http://angularjs.org
