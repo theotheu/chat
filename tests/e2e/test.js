@@ -1,4 +1,3 @@
-
 var webdriverio = require('webdriverio');
 var assert = require('assert');
 
@@ -52,7 +51,6 @@ describe('Chat test with two browsers', function () {
             .submitForm("#submitBtn");
     });
 
-
     it('Should read a message from browserA', function () {
 
         return browserA
@@ -83,7 +81,7 @@ describe('Chat test with two browsers', function () {
 
     });
 
-   it('should end the session', function () {
+    it('should end the session', function () {
         return matrix.pause(500).end();
     });
 

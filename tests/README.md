@@ -1,10 +1,3 @@
-
-- http://webdriver.io/api.html
-- https://github.com/webdriverio/webdriverio/blob/master/examples/multiremote/webdriverio.multiremote.js
- 
-#FIXME CLEANUP ABOVE THIS LINE 
-
----
 # Install webdriver
 Since v3 WebdriverIO comes with an own test runner. If you want to run your integration tests with it, install WebdriverIO globally calling:
 
@@ -66,16 +59,16 @@ phantomjs --webdriver=4445 --webdriver-selenium-grid-hub=http://127.0.0.1:4444
 ---
 
 
-# Run the tests
+# Run the tests in 3 steps in 3 terminals
 
-## Start the chat server 
+## 1. Run the chat server 
 Open a new terminal and execute `node server.js` from the root from this dorectory.
  
 You can verify that it runs by pointing your browser to `http://localhost:5000`. 
 
 Replace `localhost` with the appropriate hostname 
 
-## Start the selenium
+## 2. Run selenium
 Open a new terminal.
 
 *Version 2.44 has issues. Use 2.43.1*
@@ -85,19 +78,14 @@ Open a new terminal and run
 selenium-standalone start --version=2.43.1
 ```
 
-## Start the tests
+## 3. Run the tests
 Open a new terminal.
 
 Run `npm test`.
 
 Other option is to change your directory to tests/e2e and execute `mocha test.js`
 
-
-
-
 ### References
-- http://angularjs.org
-- http://angular.github.io/protractor
-- http://jasmine.github.io
+- http://webdriver.io/api.html
 
 
