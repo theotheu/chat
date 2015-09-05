@@ -90,7 +90,7 @@ Open a new terminal.
 
 Run `npm test`.
 
-Other option is to change your directory to tests/e2e and execute `mocha multi-test.js`
+Other option is to change your directory to tests/e2e and execute `mocha test.js`
 
 
 

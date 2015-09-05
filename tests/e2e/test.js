@@ -1,79 +1,90 @@
-/**
- *
- * Run with `node simple-test.js`
- *
- */
 
 var webdriverio = require('webdriverio');
 var assert = require('assert');
-var options = {
-    desiredCapabilities: {
-        /**
-         *
-         * Install phantomjs with `npm install -g phantomjs`
-         *
-         * Getting Started with safari
-         * Starting with Selenium 2.45.0, you must manually install the SafariDriver browser extension. Simply open the latest copy of SafariDriver.safariextz in Safari and click the "install" button. Once installed, writing a test for Safari is just as straightforward as using the FirefoxDriver:
-         * @see https://code.google.com/p/selenium/wiki/SafariDriver
-         * @see http://elementalselenium.com/tips/69-safari
-         *
-         */
-        browserName: 'phantomjs' // phantomjs | chrome | firefox | safari
-    }
-};
 
-//webdriverio
-//    .remote(options)
-//    .init()
-//    .url('http://localhost:5000')
-//    .title(function (err, res) {
-//        console.log('Title was: ' + res.value);
-//    })
-//    .waitForExist("#message", function () {
-//        console.log('finally');
-//
-//    })
-//    .setValue("#message", "tada!")
-//    .submitForm("#submitBtn")
-//    .end();
+var matrix = webdriverio.multiremote({
+        browserA: {desiredCapabilities: {browserName: 'phantomjs'}},
+        browserB: {desiredCapabilities: {browserName: 'phantomjs'}}
+    }),
+    browserA = matrix.select('browserA'),
+    browserB = matrix.select('browserB');
 
-describe("First simple test", function () {
+
+describe('Chat test with two browsers', function () {
 
     this.timeout(99999999);
-    var client = {};
 
-    before(function (done) {
-        client = webdriverio.remote(options);
-        client.init(done);
+    before(function () {
+        var chai = require('chai');
+        var chaiAsPromised = require('chai-as-promised');
+
+        chai.use(chaiAsPromised);
+        expect = chai.expect;
+        chai.Should();
+    });
+
+    it('Should open chat application', function () {
+        return matrix.init()
+            .url('http://localhost:5000/');
+    });
+
+    it('Should get me a the title of browserA', function () {
+        return browserA
+            .getTitle().should.eventually.be.equal('Chat');
+    });
+
+    it('Should get me a the title of browserB', function () {
+        return browserB
+            .getTitle().should.eventually.be.equal('Chat');
+    });
+
+    it('Should send a message from browserA', function () {
+        return browserA
+            .setValue("#message", "Hello and welcome from browserA")
+            .pause(1000)
+            .keys("Enter")
+            .pause(100);
+    });
+
+    it('Should send a message from browserB', function () {
+        return browserB
+            .setValue("#message", "Hello and welcome from browserB")
+            .submitForm("#submitBtn");
     });
 
 
-    it("Title should be 'Chat'", function (done) {
-        client
-            .url('http://localhost:5000')
-            .getTitle(function (err, title) {
-                assert(err === undefined);
-                assert(title === 'Chat');
+    it('Should read a message from browserA', function () {
+
+        return browserA
+            .pause(200)
+            .isVisible("#chat").then(function (v) {
+                assert.equal(v, true);
             })
-            .call(done);
-    });
-
-
-    it("Title should be 'Chat'", function (done) {
-        client
-            .url('http://localhost:5000')
-            .getTitle(function (err, title) {
-                assert(err === undefined);
-                assert(title === 'Chat');
+            .getText('#chat').then(function (messages) {
+                var m = messages.match(/Hello and welcome from browserB/g).length;
+                m.should.be.above(0);
+                m.should.be.equal(1);
             })
-            .setValue("#message", "tada!")
-            .submitForm("#submitBtn")
-            .call(done);
+
     });
 
+    it('Should read a message from browserB', function () {
 
-    after(function (done) {
-        client.end(done);
+        return browserB
+            .pause(200)
+            .isVisible("#chat").then(function (v) {
+                assert.equal(v, true);
+            })
+            .getText('#chat').then(function (messages) {
+                var m = messages.match(/Hello and welcome from browserA/g).length;
+                m.should.be.above(0);
+                m.should.be.equal(1);
+            })
+
+    });
+
+   it('should end the session', function () {
+        return matrix.pause(500).end();
     });
 
 });
