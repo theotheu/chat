@@ -1,5 +1,4 @@
-var webdriverjs = require('webdriverjs');
-var assert = require('assert');
+var webdriverio = require('webdriverio');
 var io = require('socket.io-client');
 var should = require('should');
 	
@@ -13,7 +12,7 @@ describe('Testing chat client', function() {
 	};
 
     before(function() {
-        client = webdriverjs.remote({
+        client = webdriverio.remote({
             desiredCapabilities: {
                 browserName: 'chrome'
             }
