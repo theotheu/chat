@@ -9,16 +9,20 @@ app.get("/", function (req, res) {
 });
 
 io.sockets.on("connection", function (socket) {
-
-    // Sends a message every 1000 milliseconds
-    setInterval(function () {
-        var d = new Date();
-        io.sockets.emit('heartbeat', {hello: 'world!', date: d});
-    }, 1000);
-
-    // Sends a message to the chat board
+	
+    io.sockets.emit("newMessage", 'a user connected');
+	
+    socket.on('message', function(msg){
+		io.sockets.emit('message', msg);
+		msg = "Automated test message: " + msg;
+		io.sockets.emit("newMessage", msg);
+	});
     socket.on("sendMessage", function (data) {
         io.sockets.emit("newMessage", data);
     });
+	
+	socket.on('disconnect', function(){
+		io.sockets.emit("newMessage", 'a user disconnected');
+	});
 
 });
