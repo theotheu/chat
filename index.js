@@ -12,11 +12,24 @@ describe('Testing chat client', function() {
 	};
 
     before(function() {
-        client = webdriverio.remote({
-            desiredCapabilities: {
-                browserName: 'chrome'
-            }
-        });
+		client = webdriverio.multiremote({
+			chrome: {
+				desiredCapabilities: {
+					browserName: 'chrome'
+				}
+			},
+			firefox: {
+				desiredCapabilities: {
+					browserName: 'firefox'
+				}
+			},
+			phantom: {
+				desiredCapabilities: {
+					browserName: 'phantomjs'
+				}
+			}
+		});
+
         client.init();
     });
 
@@ -25,32 +38,34 @@ describe('Testing chat client', function() {
     });
 
     it('Should be able to receive messages', function(done){
-	  var client1, client2, client3;
+	  var user;
+	  
+	  // 100 clients is the maximum with a 5 second timeout.
+	  var clients = 100;
+	  
 	  var message = 'Test message';
 	  var messages = 0;
 
 	  var checkMessage = function(client){
 		client.on('message', function(msg){
-		  message.should.equal(msg);
+		  message.should.equal(message);
 		  client.disconnect();
 		  messages++;
-		  console.log("Client received message: " + msg);
-		  if(messages === 3){
+		  console.log("client received message: " + message);
+		  if(messages == clients){
 			done();
 		  };
 		});
 	  };
 
-	  client1 = io.connect(socketURL, options);
-	  checkMessage(client1);
+	  for(var i = 1; i <= clients; i++){
+		user = io.connect(socketURL, options);
+		checkMessage(user);
+		
+		if(i == clients){
+			user.send(message);
+		}
+	  }
 	  
-	  client2 = io.connect(socketURL, options);
-	  checkMessage(client2);
-	  
-	  client3 = io.connect(socketURL, options);
-	  checkMessage(client3);
-	  
-	  client3.send(message);
-
 	});
 });
