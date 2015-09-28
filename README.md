@@ -1,7 +1,10 @@
 Minimal chat client with node and socket.io
+# Preview
+http://recordit.co/sJd5QafmFE
 
+Preview made using Recordit: http://recordit.co/
 # Installation
-------------
+
 ```git clone https://github.com/theotheu/chat```
 
 ```cd chat```
@@ -27,7 +30,7 @@ Point your browser to http://HOSTNAME:3000 (:13000 if using vagrant)
 Point an other browser to http://HOSTNAME:3000 (:13000 if using vagrant)
 
 # Testing
-------------
+
 ## Installing Selenium
 ### Download Selenium
 ```curl -O http://selenium-release.storage.googleapis.com/2.43/selenium-server-standalone-2.43.1.jar```
