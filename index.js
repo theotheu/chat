@@ -30,8 +30,9 @@ describe('Testing chat client', function() {
 				}
 			}
 		});
-
+	
         client.init();
+
     });
 
     after(function(done) {
