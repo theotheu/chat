@@ -8,11 +8,23 @@ Minimal chat client with node and socket.io
 
 ```npm install```
 
+## If you're using vagrant
+Try the following commands to do the npm install:
+
+```su``` (password: vagrant)
+
+```npm install```
+
+and/or
+
+```npm install --no-bin-links```
+
+## To test if it's working
 ```node server.js```
 
-Point your browser to http://HOSTNAME:3000
+Point your browser to http://HOSTNAME:3000 (:13000 if using vagrant)
 
-Point an other browser to http://HOSTNAME:3000
+Point an other browser to http://HOSTNAME:3000 (:13000 if using vagrant)
 
 # Testing
 ------------
