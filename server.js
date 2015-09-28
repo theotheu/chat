@@ -12,11 +12,18 @@ app.get("/", function (req, res) {
 
 io.sockets.on("connection", function (socket) {
 	
-	io.sockets.emit("newMessage", 'a user connected');
+	//io.sockets.emit("newMessage", 'a user connected');
+
+	var userName;
+	socket.on('newUser',function(user){
+		userName = user;
+		//users[user.name] = socket;
+		io.sockets.emit('newMessage', user + " has joined.");
+	});
 
     socket.on('message', function(msg){
 		io.sockets.emit('message', msg);
-		msg = "Automated test message: " + msg;
+		msg = userName + ": " + msg;
 		io.sockets.emit("newMessage", msg);
 	});
 	
@@ -25,8 +32,8 @@ io.sockets.on("connection", function (socket) {
     });
 	
 	socket.on('disconnect', function(){
-		io.sockets.emit("newMessage", 'a user disconnected');
-		//io.sockets.emit("newMessage", users[socket.id] + " has left the server.");
+		//io.sockets.emit("newMessage", 'a user disconnected');
+		io.sockets.emit("newMessage", userName + " has left the server.");
         //delete users[socket.id];
 	});
 

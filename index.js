@@ -1,10 +1,11 @@
 var webdriverio = require('webdriverio');
 var io = require('socket.io-client');
 var should = require('should');
-	
+
 describe('Testing chat client', function() {
     this.timeout(5000);
     var client = {};
+
     var socketURL = 'http://127.0.0.1:3000';
 	var options ={
 	  transports: ['websocket'],
@@ -41,17 +42,17 @@ describe('Testing chat client', function() {
 	  var user;
 	  
 	  // 100 clients is the maximum with a 5 second timeout.
-	  var clients = 100;
+	  var clients = 10;
 	  
 	  var message = 'Test message';
 	  var messages = 0;
 
-	  var checkMessage = function(client){
+	  var checkMessage = function(client, username){
 		client.on('message', function(msg){
-		  message.should.equal(message);
+		  message.should.equal(msg);
+		  console.log(username + " received message: " + msg);
 		  client.disconnect();
 		  messages++;
-		  console.log("client received message: " + message);
 		  if(messages == clients){
 			done();
 		  };
@@ -60,7 +61,10 @@ describe('Testing chat client', function() {
 
 	  for(var i = 1; i <= clients; i++){
 		user = io.connect(socketURL, options);
-		checkMessage(user);
+		username = "user " + i;
+		user.emit('newUser', username);
+		
+		checkMessage(user, username);
 		
 		if(i == clients){
 			user.send(message);
