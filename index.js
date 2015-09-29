@@ -4,7 +4,7 @@ var should = require('should');
 var assert = require('assert');
 
 describe('Testing chat client', function() {
-    this.timeout(1234567890);
+    this.timeout(5000);
     var client = {};
 	
 	var browserOne;
@@ -63,7 +63,7 @@ describe('Testing chat client', function() {
 	it('Should be able to receive a specific message from a different browser', function (done) {
 		browserTwo
 			.url('http://127.0.0.1:3000')
-			.waitForExist('.browserOne-message', 20000)
+			.waitForExist('.browserOne-message', 5000)
 			.getText('.browserOne-message').then(function(messages) {
 				console.log("Received message: " + messages);
 				assert.equal(messages, 'Hi, I am Browser One');

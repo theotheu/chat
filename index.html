@@ -33,7 +33,7 @@
         });
 
         socket.on("newMessage", function (data) {
-            $chat.append("<span class='message'>" + data + "</span>");
+            $chat.append(data);
             $chat.append("<br/>");
         });
 
