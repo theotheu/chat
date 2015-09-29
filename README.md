@@ -49,6 +49,6 @@ Point an other browser to http://HOSTNAME:3000 (:13000 if using vagrant)
 
 ```mocha index.js```
 
-To modify the number of clients, go to index.js and edit line 46
+To modify the number of clients, go to index.js and edit line 76
 
-```var clients = 10;```
+```var clients = 5;```

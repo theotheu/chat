@@ -72,8 +72,7 @@ describe('Testing chat client', function() {
 	
     it('Should be able to receive messages', function(done){
 	  var user;
-	  
-	  // 100 clients is the maximum with a 5 second timeout.
+
 	  var clients = 5;
 	  
 	  var message = 'Test message';
