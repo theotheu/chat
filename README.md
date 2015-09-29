@@ -1,8 +1,5 @@
 Minimal chat client with node and socket.io
-# Preview
-http://recordit.co/sJd5QafmFE
 
-Preview made using Recordit: http://recordit.co/
 # Installation
 
 ```git clone https://github.com/theotheu/chat```

@@ -13,8 +13,8 @@
 <body>
 <div id="chat"></div>
 <form id="send-message">
-    <input type="text" size="35" id="message" />
-    <input type="submit" value="send"/>
+    <input type="text" size="35" id="message"/>
+    <input type="submit" value="send" id="send"/>
 </form>
 
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
@@ -33,7 +33,7 @@
         });
 
         socket.on("newMessage", function (data) {
-            $chat.append(data);
+            $chat.append("<span class='message'>" + data + "</span>");
             $chat.append("<br/>");
         });
 
