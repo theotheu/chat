@@ -30,12 +30,16 @@ Point an other browser to http://HOSTNAME:3000 (:13000 if using vagrant)
 
 ## Installing Selenium
 ### Download Selenium
+```cd chat```
+
 ```curl -O http://selenium-release.storage.googleapis.com/2.43/selenium-server-standalone-2.43.1.jar```
 
 ## Starting the test
 ### Open 3 terminals
 #### Terminal 1
-```java -jar selenium-server-standalone-2.43.1.jar -role hub```
+```cd chat```
+
+```java -jar selenium-server-standalone-2.43.1.jar```
 #### Terminal 2
 ```cd chat```
 
