@@ -40,6 +40,7 @@ describe('Testing chat client', function() {
         client.end(done);
     });
 
+	// Test 1
 	it('Should be able to open the chat page', function(done){
 		browserOne
 			.url('http://127.0.0.1:3000')
@@ -51,6 +52,9 @@ describe('Testing chat client', function() {
 			})
 	});
 
+	// Test 2
+	
+	// Test 2.1
 	it('Should be able to send a message from a specific browser', function (done) {
         browserOne
 			.url('http://127.0.0.1:3000')
@@ -58,7 +62,8 @@ describe('Testing chat client', function() {
 			.click('#send');
 			done();
     });
-
+	
+	// Test 2.2
 	it('Should be able to receive a specific message from a different browser', function (done) {
 		browserTwo
 			.url('http://127.0.0.1:3000')
@@ -70,6 +75,7 @@ describe('Testing chat client', function() {
 			});
 	});
 	
+	// Test 3
     it('Should be able to receive messages', function(done){
 	  var user;
 
